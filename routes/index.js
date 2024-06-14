@@ -344,7 +344,11 @@ exports.chat = {
       icon: '👋',
     };
 
-
+    _.merge(message, req.body.message, {
+      id: lastId++,
+      timestamp: Date.now(),
+      userName: user.name,
+    });
 
     messages.push(message);
     res.send({ ok: true });
